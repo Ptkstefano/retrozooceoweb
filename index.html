@@ -6,25 +6,30 @@
     <title>Retro Zoo CEO</title>
     <style>
         html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            height: 100%;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #222034;
+            background-image: url("background.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: #333333;
         }
-            body {
+
+        body {
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            align-items: stretch;
+            min-height: 100vh;
         }
+
         header {
-            flex: 0 0 30vh; 
+            flex: 0 0 30vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; 
+            overflow: hidden;
+            padding-top: 20px; /* adds top margin for logo */
         }
 
         header img {
@@ -34,32 +39,57 @@
             width: auto;
             object-fit: contain;
             display: block;
+            animation: pulse 5s ease-in-out infinite; /* animation added */
         }
-                main {
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); } /* grows slightly */
+            100% { transform: scale(1); }
+        }
+
+        main {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 40vh;
+            padding: 20px 0;
+            box-sizing: border-box;
         }
+
         .policy-box {
-            background-color: #f9f9f9e2;
+            background-color: #f9f9f9c9;
             color: #222034;
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
             max-width: 700px;
             line-height: 1.6;
+            height: 80%;
+            margin: 0 20px; /* adds side margin on smaller screens */
+            box-shadow: 8px 8px rgba(0, 0, 0, 0.1);
         }
+
         footer {
-            flex: 0 0 10vh;
-            display: flex;
-            justify-content: center;
-            align-items: end;
-            overflow: hidden;
+            margin-top: auto;
             text-align: center;
             color: #aaaaaa;
             font-size: 14px;
             padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        @media (max-width: 600px) {
+            .policy-box {
+                padding: 25px;
+                margin: 10px;
+            }
+
+            header {
+                flex: 0 0 20vh; /* smaller header on mobile */
+                padding-top: 10px;
+            }
         }
     </style>
 </head>
@@ -67,6 +97,7 @@
     <header>
         <img src="logo.png" alt="Game Logo">
     </header>
+
     <main>
         <div class="policy-box">
             <h1>Privacy Policy</h1>
@@ -74,9 +105,10 @@
             <p>The game <strong>does not collect, store, or share any personal user data</strong>. There are no forms, accounts, internet connections, tracking systems, or device information collection.</p>
             <p>This policy may be updated if future versions include online features or data collection mechanisms, always respecting user privacy rights.</p>
             <p><strong>Contact:</strong> patrick.stefano.pereira@gmail.com</p>
-            <p>Last updated in october 2025.</p>
+            <p>Last updated in October 2025.</p>
         </div>
     </main>
+
     <footer>
         &copy; <span id="year"></span>
     </footer>
